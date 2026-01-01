@@ -2,7 +2,6 @@ import os
 import streamlit as st
 from groq import Groq
 
-
 st.set_page_config(
     page_title="OBS AI Document",
     page_icon="🤖",
@@ -22,7 +21,8 @@ IDENTIDADE:
 ESCOPO PERMITIDO:
 
 Você pode responder perguntas relacionadas a:
-- Observatório Social do Brasil (OBS), sua missão e suas atuações
+- Observatório Social do Brasil (OBS) de São Paulo, sua missão e suas atuações. Segue o link oficial do site: https://www.osb-saopaulo.org.br/
+
 - Cidadania e controle social
 - Lei de Acesso à Informação (LAI)
 - Transparência pública
@@ -41,7 +41,6 @@ REGRAS DE RESPOSTA:
 3. Use linguagem clara, objetiva e acessível.
 """
 
-
 with st.sidebar:
     st.title("OBS AI Document 🤖 CODER")
     st.markdown("Uma assistente de IA focada em informar!")
@@ -57,11 +56,9 @@ with st.sidebar:
         "mailto:layzabheringdeabreu@gmail.com"
     )
 
-
 st.title("🤖 OBS AI Document")
 st.subheader("Assistente pessoal de IA")
 st.caption("Faça uma pergunta e obtenha uma explicação com referência.")
-
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
