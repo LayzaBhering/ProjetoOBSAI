@@ -1,13 +1,8 @@
-# =========================
-# IMPORTAÇÕES
-# =========================
 import os
 import streamlit as st
 from groq import Groq
 
-# =========================
-# CONFIGURAÇÃO DA PÁGINA
-# =========================
+
 st.set_page_config(
     page_title="OBS AI Document",
     page_icon="🤖",
@@ -15,9 +10,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# =========================
-# PROMPT DO SISTEMA
-# =========================
 CUSTOM_PROMPT = """
 Você é o OBS AI, um assistente de IA especializado em fornecer informações
 sobre o Observatório Social do Brasil (OBS).
@@ -50,9 +42,6 @@ REGRAS DE RESPOSTA:
 """
 
 
-# =========================
-# SIDEBAR
-# =========================
 with st.sidebar:
     st.title("OBS AI Document 🤖 CODER")
     st.markdown("Uma assistente de IA focada em informar!")
@@ -68,16 +57,12 @@ with st.sidebar:
         "mailto:layzabheringdeabreu@gmail.com"
     )
 
-# =========================
-# TÍTULOS
-# =========================
+
 st.title("🤖 OBS AI Document")
 st.subheader("Assistente pessoal de IA")
 st.caption("Faça uma pergunta e obtenha uma explicação com referência.")
 
-# =========================
-# HISTÓRICO DE MENSAGENS
-# =========================
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -86,9 +71,6 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# =========================
-# CLIENTE GROQ
-# =========================
 cliente = None
 if groq_API_Key:
     try:
@@ -97,39 +79,26 @@ if groq_API_Key:
         st.sidebar.error(f"Erro ao conectar à Groq: {e}")
         st.stop()
 
-# =========================
-# INPUT DO USUÁRIO
-# =========================
 prompt = st.chat_input("Qual sua dúvida?")
 
 if prompt:
     if not cliente:
         st.warning("Insira sua API Key na barra lateral.")
         st.stop()
-
     # Salva mensagem do usuário
     st.session_state.messages.append({
         "role": "user",
         "content": prompt
     })
-
     # Exibe mensagem do usuário
     with st.chat_message("user"):
         st.markdown(prompt)
-
-    # =========================
-    # MONTA CONTEXTO (SEM RESPONDER)
-    # =========================
     messages_for_api = [
         {"role": "system", "content": CUSTOM_PROMPT}
     ]
 
     for msg in st.session_state.messages:
         messages_for_api.append(msg)
-
-    # =========================
-    # CHAMADA ÚNICA À API
-    # =========================
     with st.chat_message("assistant"):
         with st.spinner("Analisando sua pergunta..."):
             try:
