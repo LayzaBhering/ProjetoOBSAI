@@ -24,23 +24,12 @@ Groq API: Processamento de linguagem natural de ultra-velocidade.
 
 LLM (Llama 3 / Mixtral): Modelos de linguagem de ponta para respostas precisas.
 
-***🚀 Como Executar o Projeto***
+***🚀 Como acessar o Projeto***
 
-=> Clone o repositório:
+Clique no link abaixo. É o aplicativo publicado: 
+https://agenteiaobssp.streamlit.app/
 
-Bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-
-Instale as dependências:
-
-Bash
-pip install streamlit groq-sdk
-Obtenha uma API Key: Crie uma conta gratuita no Groq Cloud Console e gere sua chave.
-
-Inicie a aplicação:
-
-Bash
-streamlit run app.py
+Para utilizar o aplicativo, é necessário ter uma key gerada pelo site da groq: https://console.groq.com/
 
 ***📖 Regras de Operação (Prompt System)***
 
